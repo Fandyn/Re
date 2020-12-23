@@ -14,6 +14,7 @@ class UserMapperTest {
 
     @Test
     void findAll() {
+        System.out.println("首次修改>v<");
         List<User> list = userMapper.findAll();
         for (User air : list) {
             System.out.println(air);
