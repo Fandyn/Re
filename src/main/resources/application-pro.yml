@@ -1,0 +1,41 @@
+server:
+  #项目端口
+  port: 8080
+  servlet:
+    #    项目路径
+    context-path: /
+
+
+# 连接数据库的信息
+spring:
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://localhost:3306/mybatis?serverTimezone=GMT
+    username: root
+    password: 123456
+    type: com.alibaba.druid.pool.DruidDataSource
+    # 视图的前缀和后缀
+  mvc:
+    view:
+      prefix: /WEB-INF/jsp/
+      suffix: .jsp
+
+# mybatis配置
+mybatis:
+  mapper-locations: classpath*:kon/teatime/mapper/*.xml
+  type-aliases-package: com/kon/teatime/entity
+  configuration:
+    map-underscore-to-camel-case: true
+
+# 查看sql语句
+logging:
+  level:
+    com.kon.teatime.mapper: DEBUG
+
+
+picPath: d:/xxx/yyy
+
+aliyun:
+  x: xxyt
+  y: yy
+  z: zz
