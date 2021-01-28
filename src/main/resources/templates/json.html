@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>AJAX</title>
+    <script src="https://cdn.staticfile.org/vue/2.4.2/vue.min.js"></script>
+    <script src="https://cdn.staticfile.org/axios/0.18.0/axios.min.js"></script>
+</head>
+<body>
+<div id="app">
+    <span>自由</span>
+    <a href="http://localhost:8080/mio">mio</a>
+    <input type="button" value="最后的波纹" @click="getJoke">
+    <p>{{joke}}</p>
+    <p>{{info}}</p>
+    <p>{{info1}}</p>
+
+    <div v-for="site in info">
+        {{ site.name }}
+    </div>
+</div>
+<script type = "text/javascript">
+    new Vue({
+        el: '#app',
+        data : {
+            info: "未执行",
+            joke: '！',
+            info1: '为什么？',
+        },
+        mounted (){
+            Vue.prototype.$ajax=axios //修改Vue的原型属性
+            //POST
+            this.$ajax({
+                method: 'post',
+                url: '/json',
+                data:{
+                    code: '1234567',
+                    name: 'Joyce'
+                }
+            }).then(function (res) {
+                alert('post code done');
+            }).catch(function(err){
+                console.log(err)
+            });
+
+                let that = this;
+                let name=this.usernames;
+                axios.post('/json', {name: "世界奇妙物语",code:"1287"})
+                    .then(function (res) {
+                        that.info = "qwq";
+                    }, function (err) {
+                        that.info=err;
+                    });
+
+        },
+        methods:{
+            getJoke: function() {
+                let that = this;
+                axios.get('https://autumnfish.cn/api/joke/list?num=2')
+                    .then(function(response) {
+                        that.joke = response.data;
+                    }, function(err) {})
+            },
+        }
+    })
+</script>
+</body>
+</html>

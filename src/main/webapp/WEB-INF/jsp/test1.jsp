@@ -2,10 +2,10 @@
 <html>
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
+    <title>test1</title>
 </head>
 <body>
-    <h1>Hello JSP!! </h1>
+    <h1>Hello this is test!! </h1>
     ${name}
 </body>
 </html>
